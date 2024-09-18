@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <title>Check Element in Array</title>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <a href="index.html" class="btn btn-secondary mb-3">Home</a>
+        <h1 class="mt-3">You only need one - Beginner</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Traccia</h3>
+                <p class="card-text">
+                    You will be given an array a and a value x. All you need to do is check whether the provided array
+                    contains the value.
+
+                    Array can contain numbers or strings. X can be either.
+
+                    Return true if the array contains the value, false if not.
+                </p>
+            </div>
+        </div>
+                    <!-- Campo per l'array -->
+                <div class="mb-3">
+                    <label for="arrayInput" class="form-label">Inserisci un array di numeri o stringhe separati da
+                        virgole:</label>
+                    <input type="text" class="form-control" id="arrayInput" placeholder="Esempio: 1, 2, 3, 4 o a, b, c">
+                </div>
+
+                <!-- Campo per l'elemento da cercare -->
+                <div class="mb-3">
+                    <label for="elementInput" class="form-label">Inserisci l'elemento da cercare:</label>
+                    <input type="text" class="form-control" id="elementInput" placeholder="Esempio: 3 o b">
+                </div>
+
+                <!-- Pulsante per eseguire il controllo -->
+                <button class="btn btn-primary" onclick="handleCheck()">Verifica</button>
+
+                <!-- Output del risultato -->
+                <h3 class="mt-3">Risultato:</h3>
+                <p id="output"></p>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<script>
+    function check(a, x) {
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] === x) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function handleCheck() {
+        // Prendi l'input dall'utente
+        let arrayInput = document.getElementById("arrayInput").value;
+        let elementInput = document.getElementById("elementInput").value;
+
+        // Converti l'array di stringhe in array di numeri o lascia stringhe se non numerico
+        let array = arrayInput.split(',').map(item => isNaN(item) ? item.trim() : parseFloat(item.trim()));
+
+        // Controlla se l'elemento è un numero o una stringa
+        let element = isNaN(elementInput) ? elementInput : parseFloat(elementInput);
+
+        // Esegui la funzione check
+        let result = check(array, element);
+
+        // Mostra il risultato
+        document.getElementById("output").innerText = result ? "Elemento trovato!" : "Elemento non trovato!";
+    }
+</script>

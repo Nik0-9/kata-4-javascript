@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica Pangramma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <a href="index.html" class="btn btn-secondary mb-3">Home</a>
+        <h1>Verifica Pangramma</h1>
+        <p>Un pangramma è una frase che contiene tutte le lettere dell'alfabeto. Inserisci una frase per verificare se è
+            un
+            pangramma.</p>
+        <input type="text" id="input" placeholder="Inserisci una frase...">
+        <button class="btn btn-primary mt-3" id="check">Verifica</button>
+        <div id="result"></div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+<script>
+    function isPangram(string) {
+        let abc = 'abcdefghijklmnopqrstuvwxyz';
+        let stringLower = string.toLowerCase();
+        for (let i = 0; i < abc.length; i++) {
+            if (!stringLower.includes(abc[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    document.getElementById('check').addEventListener('click', function () {
+        let input = document.getElementById('input').value;
+        let result = document.getElementById('result');
+        if (isPangram(input)) {
+            result.textContent = 'È un pangramma!';
+            result.style.color = 'green';
+        } else {
+            result.textContent = 'Non è un pangramma.';
+            result.style.color = 'red';
+        }
+    });
+</script>
