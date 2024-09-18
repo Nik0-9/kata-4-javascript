@@ -8,30 +8,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
     <title>Esercizio 3</title>
-    <script>
-        function spinWords(string) {
-            let words = string.split(' ');
-            let res = '';
-            for (let i = 0; i < words.length; i++) {
-                if (words[i].length >= 5) {
-                    words[i] = words[i].split('').reverse().join('');
-                }
-                res += words[i] + (i < words.length - 1 ? ' ' : '');
-            }
-            return res;
-        }
-
-        function handleSpinWords() {
-            // Prendi l'input dell'utente
-            const inputString = document.getElementById('inputString').value;
-
-            // Applica la funzione spinWords
-            const result = spinWords(inputString);
-
-            // Visualizza il risultato
-            document.getElementById('output').innerText = result;
-        }
-    </script>
+    
 </head>
 
 <body>
@@ -78,3 +55,28 @@
 </body>
 
 </html>
+
+<script>
+    function spinWords(string) {
+        let words = string.split(' ');
+        let res = '';
+        for (let i = 0; i < words.length; i++) {
+            if (words[i].length >= 5) {
+                words[i] = words[i].split('').reverse().join('');
+            }
+            res += words[i] + (i < words.length - 1 ? ' ' : '');
+        }
+        return res;
+    }
+
+    function handleSpinWords() {
+        // Prendi l'input dell'utente
+        const inputString = document.getElementById('inputString').value;
+
+        // Applica la funzione spinWords
+        const result = spinWords(inputString);
+
+        // Visualizza il risultato
+        document.getElementById('output').innerText = result;
+    }
+</script>
